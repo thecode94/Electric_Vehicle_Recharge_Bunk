@@ -109,9 +109,6 @@ export default function Bookings() {
                                         <div className="muted small">Status: {status}</div>
                                     </div>
                                     <div style={{ display: "flex", gap: 8 }}>
-                                        <Link to={`/booking/${encodeURIComponent(id)}`} className="btn-secondary">
-                                            View
-                                        </Link>
                                         {showPay && (
                                             <button onClick={() => onPay(b)} className="btn-primary">
                                                 Pay

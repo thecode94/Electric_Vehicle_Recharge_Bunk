@@ -22,7 +22,7 @@ const Login = () => {
 
     // Role-aware links
     const registerHref =
-        role === "owner" ? "/owner/register" : role === "user" ? "/auth/register" : null;
+        role === "owner" ? "/auth/register" : role === "user" ? "/auth/register" : null;
 
     // Forgot password: ENABLE only for user; DISABLE (null) for owner/admin
     const resetHref = role === "user" ? "/auth/forgot-password" : null;
