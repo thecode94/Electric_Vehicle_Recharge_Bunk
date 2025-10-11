@@ -1,0 +1,186 @@
+/* ------------------------------
+   Components: buttons, forms,
+   toasts, spinners, cards, etc.
+   ------------------------------ */
+
+/* Buttons */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    font-weight: 600;
+    line-height: 1;
+}
+
+.btn.small,
+.btn-primary.small,
+.btn-secondary.small {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* Links styled as buttons inside tables/lists */
+a.btn-primary,
+a.btn-secondary,
+a.btn-danger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+/* Icon button (textless) */
+.icon-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+}
+
+/* Inputs */
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    background: linear-gradient(45deg, transparent 46%, var(--text-muted) 46%, var(--text-muted) 54%, transparent 54%),
+        linear-gradient(-45deg, transparent 46%, var(--text-muted) 46%, var(--text-muted) 54%, transparent 54%);
+    border-radius: 50%;
+}
+
+/* Forms groups */
+.form .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 720px) {
+    .form .row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cards */
+.card>.card-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 700;
+}
+
+.card>.card-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* Toast */
+.toast-wrap {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 50;
+    display: grid;
+    gap: 8px;
+}
+
+.toast {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+}
+
+.toast--success {
+    border-color: rgba(4, 120, 87, 0.35);
+}
+
+.toast--error {
+    border-color: rgba(220, 38, 38, 0.35);
+}
+
+.toast--info {
+    border-color: rgba(11, 87, 208, 0.35);
+}
+
+/* Spinner */
+.spinner {
+    border-width: 2px;
+}
+
+.spinner--sm {
+    width: 14px;
+    height: 14px;
+}
+
+.spinner--lg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Tables */
+table thead th {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: .02em;
+}
+
+tbody tr:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+@media (prefers-color-scheme: dark) {
+    tbody tr:hover {
+        background: rgba(255, 255, 255, 0.03);
+    }
+}
+
+/* Badges as component classes (alt to inline badges) */
+.badge {
+    user-select: none;
+}
+
+.badge+.badge {
+    margin-left: 6px;
+}
+
+/* Helper: muted block */
+.block-muted {
+    background: var(--bg-muted);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+}
+
+/* Links in headers/lists */
+.navlink {
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.navlink.active {
+    color: var(--primary);
+    background: var(--primary-ghost);
+}
+
+/* Modal (future use) */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: grid;
+    place-items: center;
+    z-index: 60;
+}
+
+.modal>.panel {
+    width: min(600px, 92vw);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2);
+    padding: 16px;
+}

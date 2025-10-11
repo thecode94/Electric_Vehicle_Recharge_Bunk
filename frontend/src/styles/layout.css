@@ -1,0 +1,650 @@
+/* src/styles/Layout.css */
+
+/* =======================
+   LAYOUT CORE STYLES
+   ======================= */
+
+.layout-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f8fafc;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #1a202c;
+    line-height: 1.6;
+}
+
+/* =======================
+   HEADER STYLES
+   ======================= */
+
+.layout-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.layout-header:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* =======================
+   MAIN CONTAINER STYLES
+   ======================= */
+
+.layout-main {
+    flex: 1;
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 24px;
+    gap: 0;
+    transition: all 0.3s ease;
+}
+
+.layout-main.with-sidebar {
+    gap: 24px;
+}
+
+.layout-main.admin {
+    max-width: 1600px;
+}
+
+.layout-main.owner {
+    max-width: 1400px;
+}
+
+/* =======================
+   SIDEBAR STYLES
+   ======================= */
+
+.layout-sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 88px;
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.layout-sidebar:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Admin Sidebar */
+.layout-sidebar.admin {
+    width: 280px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.layout-sidebar.admin:hover {
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Owner Sidebar */
+.layout-sidebar.owner {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
+}
+
+.layout-sidebar.owner:hover {
+    box-shadow: 0 12px 30px rgba(240, 147, 251, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Sidebar Scrollbar */
+.layout-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.layout-sidebar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.layout-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.layout-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.layout-sidebar.admin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.layout-sidebar.owner::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* =======================
+   CONTENT AREA STYLES
+   ======================= */
+
+.layout-content {
+    flex: 1;
+    min-width: 0;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.layout-content:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.layout-content.with-bottom-nav {
+    margin-bottom: 80px;
+}
+
+.layout-content-inner {
+    padding: 32px;
+    min-height: calc(100vh - 200px);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =======================
+   BOTTOM NAVIGATION STYLES
+   ======================= */
+
+.layout-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.layout-bottom-nav:hover {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Bottom Nav Items */
+.layout-bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #6b7280;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    min-width: 60px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transform: translateY(0);
+}
+
+.layout-bottom-nav-item:hover {
+    color: #4f46e5;
+    background-color: #f3f4f6;
+    transform: translateY(-2px);
+}
+
+.layout-bottom-nav-item.active {
+    color: #3b82f6;
+    background-color: #eff6ff;
+    font-weight: 600;
+    transform: translateY(-1px);
+}
+
+.layout-bottom-nav-item svg {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+}
+
+.layout-bottom-nav-item:hover svg {
+    transform: scale(1.1);
+}
+
+.layout-bottom-nav-item.active svg {
+    stroke-width: 2;
+}
+
+/* =======================
+   LOADING STYLES
+   ======================= */
+
+.layout-loading {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.layout-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.layout-loading-text {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* =======================
+   MOBILE RESPONSIVENESS
+   ======================= */
+
+@media (max-width: 768px) {
+    .layout-main {
+        padding: 0;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .layout-main.with-sidebar {
+        gap: 0;
+    }
+
+    .layout-sidebar {
+        display: none;
+        /* Hidden on mobile */
+    }
+
+    .layout-content {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .layout-content:hover {
+        box-shadow: none;
+    }
+
+    .layout-content-inner {
+        padding: 16px;
+        min-height: calc(100vh - 140px);
+    }
+
+    .layout-content.with-bottom-nav .layout-content-inner {
+        min-height: calc(100vh - 210px);
+        padding-bottom: 90px;
+    }
+
+    .layout-header {
+        position: sticky;
+        backdrop-filter: blur(12px);
+    }
+
+    .layout-bottom-nav {
+        height: 75px;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.98);
+    }
+
+    .layout-bottom-nav-item {
+        min-width: 55px;
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+
+    .layout-bottom-nav-item svg {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 3px;
+    }
+}
+
+/* =======================
+   TABLET RESPONSIVENESS
+   ======================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .layout-main.with-sidebar {
+        gap: 16px;
+    }
+
+    .layout-sidebar {
+        width: 240px;
+        top: 84px;
+    }
+
+    .layout-sidebar.admin {
+        width: 260px;
+    }
+
+    .layout-content-inner {
+        padding: 24px;
+    }
+
+    .layout-main {
+        padding: 16px;
+    }
+}
+
+/* =======================
+   LARGE DESKTOP
+   ======================= */
+
+@media (min-width: 1025px) {
+    .layout-main {
+        padding: 32px;
+    }
+
+    .layout-content-inner {
+        padding: 40px;
+    }
+
+    .layout-sidebar {
+        top: 92px;
+    }
+
+    .layout-main.admin .layout-sidebar {
+        width: 300px;
+    }
+}
+
+/* =======================
+   ULTRA-WIDE SCREENS
+   ======================= */
+
+@media (min-width: 1400px) {
+    .layout-main.admin {
+        max-width: 1800px;
+    }
+
+    .layout-main.owner {
+        max-width: 1600px;
+    }
+
+    .layout-main {
+        max-width: 1400px;
+    }
+}
+
+/* =======================
+   DARK MODE SUPPORT
+   ======================= */
+
+@media (prefers-color-scheme: dark) {
+    .layout-container {
+        background: #0f172a;
+        color: #e2e8f0;
+    }
+
+    .layout-header {
+        background: rgba(15, 23, 42, 0.95);
+        border-bottom-color: #334155;
+    }
+
+    .layout-content {
+        background: #1e293b;
+        border-color: #334155;
+    }
+
+    .layout-sidebar {
+        background: #1e293b;
+        border-color: #334155;
+    }
+
+    .layout-bottom-nav {
+        background: rgba(15, 23, 42, 0.95);
+        border-top-color: #334155;
+    }
+
+    .layout-bottom-nav-item {
+        color: #94a3b8;
+    }
+
+    .layout-bottom-nav-item:hover {
+        color: #60a5fa;
+        background-color: #334155;
+    }
+
+    .layout-bottom-nav-item.active {
+        color: #60a5fa;
+        background-color: #1e3a8a;
+    }
+}
+
+/* =======================
+   HIGH CONTRAST MODE
+   ======================= */
+
+@media (prefers-contrast: high) {
+
+    .layout-sidebar,
+    .layout-content,
+    .layout-header,
+    .layout-bottom-nav {
+        border-width: 2px;
+        border-style: solid;
+    }
+
+    .layout-sidebar.admin,
+    .layout-sidebar.owner {
+        border-color: currentColor;
+    }
+}
+
+/* =======================
+   REDUCED MOTION
+   ======================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .layout-sidebar,
+    .layout-content,
+    .layout-header,
+    .layout-bottom-nav,
+    .layout-bottom-nav-item,
+    .layout-content-inner {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* =======================
+   PRINT STYLES
+   ======================= */
+
+@media print {
+
+    .layout-sidebar,
+    .layout-header,
+    .layout-bottom-nav {
+        display: none !important;
+    }
+
+    .layout-main {
+        flex-direction: column;
+        max-width: 100%;
+        padding: 0;
+        gap: 0;
+    }
+
+    .layout-content {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+
+    .layout-content-inner {
+        padding: 0;
+    }
+
+    .layout-container {
+        background: transparent;
+    }
+}
+
+/* =======================
+   FOCUS STYLES
+   ======================= */
+
+.layout-bottom-nav-item:focus-visible,
+.layout-sidebar:focus-visible,
+.layout-content:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* =======================
+   UTILITY CLASSES
+   ======================= */
+
+.layout-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.layout-slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.layout-blur-backdrop {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.layout-glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* =======================
+   SMOOTH SCROLLING
+   ======================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.layout-sidebar,
+.layout-content {
+    scroll-behavior: smooth;
+}
+
+/* =======================
+   CUSTOM SCROLLBAR FOR WEBKIT
+   ======================= */
+
+.layout-content::-webkit-scrollbar,
+.layout-content-inner::-webkit-scrollbar {
+    width: 6px;
+}
+
+.layout-content::-webkit-scrollbar-track,
+.layout-content-inner::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.layout-content::-webkit-scrollbar-thumb,
+.layout-content-inner::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.layout-content::-webkit-scrollbar-thumb:hover,
+.layout-content-inner::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* =======================
+   PERFORMANCE OPTIMIZATIONS
+   ======================= */
+
+.layout-sidebar,
+.layout-content,
+.layout-header,
+.layout-bottom-nav {
+    will-change: transform;
+    contain: layout style paint;
+}
+
+.layout-content-inner {
+    contain: layout style;
+}

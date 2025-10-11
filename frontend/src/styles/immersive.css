@@ -1,0 +1,218 @@
+/* src/styles/immersive.css */
+
+/* Color tokens */
+:root {
+    --bg: #0e1117;
+    --bg-grad1: #0e1117;
+    --bg-grad2: #111827;
+    --text-color: #0a0a0a;
+    /* overridden in dark below */
+    --text-invert: #0e1117;
+    --muted-color: #5b6b8b;
+
+    --brand: #4f7cff;
+    --brand-2: #7a5cff;
+    --accent: #1de9b6;
+
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.14);
+    --input-bg: rgba(255, 255, 255, 0.08);
+    --map-bg: rgba(127, 160, 255, 0.08);
+}
+
+/* Dark default */
+html,
+body,
+#root {
+    background: radial-gradient(1200px 600px at 10% -10%, rgba(79, 124, 255, 0.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(29, 233, 182, 0.14), transparent 60%),
+        linear-gradient(180deg, var(--bg-grad1), var(--bg-grad2));
+    color: #e8ebf2;
+}
+
+/* Light scheme support */
+@media (prefers-color-scheme: light) {
+    :root {
+        --text-color: #0a0a0a;
+        --muted-color: #4a5568;
+        --card-bg: rgba(255, 255, 255, 0.8);
+        --card-border: rgba(0, 0, 0, 0.08);
+        --input-bg: #ffffff;
+        --map-bg: #eef3ff;
+    }
+
+    html,
+    body,
+    #root {
+        background: radial-gradient(1200px 600px at 10% -10%, rgba(79, 124, 255, 0.18), transparent 60%),
+            radial-gradient(900px 500px at 90% 10%, rgba(29, 233, 182, 0.12), transparent 60%),
+            linear-gradient(180deg, #f7faff, #ffffff);
+        color: var(--text-color);
+    }
+}
+
+/* Background layer for page container to ensure readable content spacing */
+.immersive-bg {
+    position: relative;
+    z-index: 0;
+}
+
+/* Subtle animated gradient halo behind hero */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background:
+        radial-gradient(400px 200px at 80% -10%, rgba(122, 92, 255, 0.18), transparent 60%),
+        radial-gradient(300px 160px at 10% -20%, rgba(79, 124, 255, 0.22), transparent 60%);
+    filter: blur(30px);
+    z-index: -1;
+    border-radius: 18px;
+}
+
+/* Glass card look */
+.glass {
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Typography */
+.title-xl {
+    letter-spacing: -0.02em;
+    font-size: clamp(26px, 2.4vw + 16px, 38px);
+    line-height: 1.1;
+}
+
+.lead {
+    font-size: 1.05rem;
+    color: var(--muted-color);
+}
+
+/* Buttons */
+.btn-raise {
+    transform: translateY(0);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    box-shadow: 0 6px 14px rgba(79, 124, 255, 0.25);
+}
+
+.btn-raise:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(79, 124, 255, 0.35);
+}
+
+.btn-ghost {
+    background: transparent !important;
+    border: 1px solid var(--card-border) !important;
+    transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+
+.btn-ghost:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Search and controls */
+.search-bar .input-elevated {
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    padding: 10px 12px;
+    outline: none;
+    transition: box-shadow .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.search-bar .input-elevated:focus {
+    border-color: rgba(79, 124, 255, 0.65);
+    box-shadow: 0 0 0 4px rgba(79, 124, 255, 0.18);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Toggle styling without JS change */
+.toggle input {
+    appearance: none;
+    width: 36px;
+    height: 22px;
+    border-radius: 999px;
+    border: 1px solid var(--card-border);
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+    cursor: pointer;
+    transition: background .18s ease, border-color .18s ease;
+}
+
+.toggle input::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    transform: translateX(0);
+    transition: transform .18s ease, background .18s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.toggle input:checked {
+    background: linear-gradient(90deg, rgba(79, 124, 255, 0.9), rgba(122, 92, 255, 0.9));
+    border-color: transparent;
+}
+
+.toggle input:checked::after {
+    transform: translateX(14px);
+    background: #f7fafc;
+}
+
+.toggle span {
+    color: var(--muted-color);
+}
+
+/* Map shell with subtle glow */
+.map-shell {
+    position: relative;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.map-shell::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    border-radius: 16px;
+    background: radial-gradient(280px 140px at 85% 10%, rgba(79, 124, 255, 0.18), transparent 60%);
+    mix-blend-mode: screen;
+}
+
+/* Feature grid cards lift on hover */
+.feature-grid .card,
+.info-grid>div {
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+}
+
+.feature-grid .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+/* Readable muted text in both modes */
+.muted {
+    color: var(--muted-color);
+}
+
+/* Reduce motion respect */
+@media (prefers-reduced-motion: reduce) {
+
+    .btn-raise,
+    .feature-grid .card {
+        transition: none;
+        transform: none;
+    }
+
+    .hero::before {
+        display: none;
+    }
+}

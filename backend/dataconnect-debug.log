@@ -1,0 +1,26 @@
+I0924 01:18:53.691607    6896 load.go:31] Reloading schema and connectors...
+I0924 01:18:53.783440    6896 control.go:94] [/emulator/backend 7689] UpdateResources(): done
+Schema: sources: schema\schema.gql [1992B] 
+Connector "example": sources: example\queries.gql [1801B] example\mutations.gql [1243B] 
+I0924 01:18:53.853625    6896 codegen.go:82] [connector "example" javascriptSdk] Generating sources into "C:\\Users\\HP\\Desktop\\project\\Electric_Vehicle_Recharge_Bunk\\backend\\src\\dataconnect-generated"
+I0924 01:18:53.877099    6896 collector.go:107] schema extensions wrote into "C:\\Users\\HP\\Desktop\\project\\Electric_Vehicle_Recharge_Bunk\\backend\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\mutation.gql [13679B] main\implicit.gql [1261B] main\input.gql [28173B] main\relation.gql [13746B] main\query.gql [5099B] prelude.gql [73251B] 
+I0924 01:18:53.881932    6896 collector.go:107] connector "example" javascriptSdk wrote into "C:\\Users\\HP\\Desktop\\project\\Electric_Vehicle_Recharge_Bunk\\backend\\src\\dataconnect-generated"
+Generated sources: index.d.ts [8025B] esm\index.esm.js [3560B] esm\package.json [17B] index.cjs.js [4050B] package.json [637B] README.md [40804B] 
+I0924 01:18:53.885300    6896 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0924 01:18:53.885300    6896 load.go:109] Finished reloading
+I0924 01:18:53.886735    6896 dev.go:102] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I0924 01:18:53.887701    6896 dev.go:102] Listening on address (HTTP + gRPC): [::1]:9399
+I0924 01:19:08.470045    6896 migrate.go:24] Running migration SQL:
+Step 1: CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+Step 2: CREATE TABLE "public"."movie" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "genre" text NULL, "image_url" text NOT NULL, "title" text NOT NULL, PRIMARY KEY ("id"))
+Step 3: CREATE TABLE "public"."user" ("id" text NOT NULL, "username" character varying(50) NOT NULL, PRIMARY KEY ("id"))
+Step 4: CREATE TABLE "public"."Reviews" ("movie_id" uuid NOT NULL, "user_id" text NOT NULL, "rating" integer NULL, "review_date" date NOT NULL, "review_text" text NULL, PRIMARY KEY ("movie_id", "user_id"), CONSTRAINT "Reviews_movie_id_fkey" FOREIGN KEY ("movie_id") REFERENCES "public"."movie" ("id") ON DELETE CASCADE, CONSTRAINT "Reviews_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."user" ("id") ON DELETE CASCADE)
+Step 5: CREATE INDEX "Reviews_movieId_idx" ON "public"."Reviews" ("movie_id")
+Step 6: CREATE INDEX "Reviews_userId_idx" ON "public"."Reviews" ("user_id")
+Step 7: CREATE TABLE "public"."movie_metadata" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "movie_id" uuid NOT NULL, "description" text NULL, "rating" double precision NULL, "release_year" integer NULL, PRIMARY KEY ("id"), CONSTRAINT "movie_metadata_movie_id_fkey" FOREIGN KEY ("movie_id") REFERENCES "public"."movie" ("id") ON DELETE CASCADE)
+Step 8: CREATE INDEX "movie_metadata_movieId_idx" ON "public"."movie_metadata" ("movie_id")
+Step 9: CREATE UNIQUE INDEX "movie_metadata_movieId_uidx" ON "public"."movie_metadata" ("movie_id")
+I0924 01:19:09.013605    6896 control.go:94] [/emulator/backend 81c2] UpdateResources(): done
+Schema: sources: schema\schema.gql [1992B] 
+Connector "example": sources: example\mutations.gql [1243B] example\queries.gql [1801B] 

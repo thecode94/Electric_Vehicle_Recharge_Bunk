@@ -1,0 +1,148 @@
+/* ------------------------------
+   Page-specific styles
+   ------------------------------ */
+
+/* Home */
+.page-home h1 {
+    font-size: clamp(28px, 3vw, 36px);
+}
+
+.page-home .hero {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 720px) {
+    .page-home .hero {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Auth pages */
+.auth-form {
+    display: grid;
+    gap: 12px;
+}
+
+.auth-form .actions {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.auth-form .actions a {
+    font-size: 12px;
+    color: var(--primary);
+}
+
+/* Search */
+.search-results {
+    display: grid;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.search-bar input[type="search"] {
+    flex: 1;
+    min-width: 240px;
+}
+
+/* Station details */
+.station-details {
+    display: grid;
+    gap: 12px;
+}
+
+.station-details .info {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Planner */
+.planner-form {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.planner-results {
+    display: grid;
+    gap: 8px;
+}
+
+/* Bookings */
+.booking-list {
+    display: grid;
+    gap: 12px;
+}
+
+.booking-card {
+    padding: 12px;
+}
+
+.booking-card .meta {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Owner dashboard */
+.owner-dashboard {
+    display: grid;
+    gap: 16px;
+}
+
+.owner-dashboard .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.owner-dashboard .stats .card {
+    padding: 16px;
+}
+
+/* Admin tables */
+.admin-table {
+    overflow-x: auto;
+}
+
+.admin-table table {
+    min-width: 720px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-table th {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Profile */
+.profile-page {
+    display: grid;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.profile-page h2 {
+    font-size: 18px;
+}
+
+.profile-page .card {
+    padding: 16px;
+}
